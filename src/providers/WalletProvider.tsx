@@ -17,8 +17,7 @@ import { PropsWithChildren, useMemo } from "react";
 import { Network } from "@aptos-labs/ts-sdk";
 import { useToast } from "@/hooks/use-toast";
 import { useAutoConnect } from "./AutoConnectProvider";
-
-const AptosConnectId = "99d260d0-c69d-4c15-965f-f6f9b7b00102";
+import { useClaimSecretKey } from '@/hooks/use-claim-secret-key';
 
 // Statically initialize wallets that don't change for the network
 const martianWallet = new MartianWallet();
@@ -34,6 +33,7 @@ const bitgetWallet = new BitgetWallet();
 export function WalletProvider({ children }: PropsWithChildren) {
   const { autoConnect } = useAutoConnect();
   const { toast } = useToast();
+  const claimSecretKey = useClaimSecretKey();
 
   const wallets = useMemo(
     () => [
@@ -60,8 +60,16 @@ export function WalletProvider({ children }: PropsWithChildren) {
       plugins={wallets}
       autoConnect={autoConnect}
       dappConfig={{
-        aptosConnectDappId: AptosConnectId,
         network: Network.TESTNET,
+        // aptosApiKey: process.env.NEXT_PUBLIC_APTOS_API_KEY,
+        aptosConnect: {
+          claimSecretKey,
+          dappId: "57fa42a9-29c6-4f1e-939c-4eefa36d9ff5",
+        },
+        mizuwallet: {
+          manifestURL:
+            "https://assets.mz.xyz/static/config/mizuwallet-connect-manifest.json",
+        },
       }}
       onError={(error) => {
         toast({

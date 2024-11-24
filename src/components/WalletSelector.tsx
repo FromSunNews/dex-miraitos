@@ -70,7 +70,14 @@ export function WalletSelector(walletSortingOptions: WalletSortingOptions) {
   return connected ? (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button>
+        <Button variant="outline">
+          <img
+            src={wallet?.icon}
+            alt={wallet?.name}
+            width={20}
+            height={20}
+            className="rounded-full"
+          />
           {account?.ansName || truncateAddress(account?.address) || "Unknown"}
         </Button>
       </DropdownMenuTrigger>
@@ -100,7 +107,7 @@ export function WalletSelector(walletSortingOptions: WalletSortingOptions) {
       <DialogTrigger asChild>
         <Button variant="default">
           <Wallet />
-          <>Connect To Wallet</>
+          <>Connect Wallet</>
         </Button>
       </DialogTrigger>
       <ConnectWalletDialog close={closeDialog} {...walletSortingOptions} />
