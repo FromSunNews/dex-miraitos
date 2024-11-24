@@ -1,13 +1,23 @@
-import './App.css'
+import '@/App.css'
+import {
+  ReactQueryClientProvider,
+  WalletProvider,
+  Dashboard,
+  AutoConnectProvider,
+} from '@/providers'
+import { Toaster } from "@/components/ui/toaster";
 
 function App() {
-
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </>
+    <AutoConnectProvider>
+      <ReactQueryClientProvider>
+        <WalletProvider>
+          {/* Router sth */}
+          <Dashboard />
+          <Toaster />
+        </WalletProvider>
+      </ReactQueryClientProvider>
+    </AutoConnectProvider>
   )
 }
 
