@@ -7,7 +7,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import {
   SidebarInset,
@@ -15,7 +14,6 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { WalletSelector } from "@/components/wallet-selector"
-import { Wallet } from "lucide-react"
 
 export function Dashboard() {
   return (
