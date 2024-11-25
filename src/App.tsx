@@ -2,22 +2,28 @@ import '@/App.css'
 import {
   ReactQueryClientProvider,
   WalletProvider,
-  Dashboard,
   AutoConnectProvider,
 } from '@/providers'
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/shared/ui/toaster";
+import { ErrorBoundary } from '@/components/features/error-boundary';
+import { ThemeProvider } from '@/context/theme';
+import { RouterProvider } from 'react-router-dom';
+import { router } from '@/routes';
 
 function App() {
   return (
-    <AutoConnectProvider>
-      <ReactQueryClientProvider>
-        <WalletProvider>
-          {/* Router sth */}
-          <Dashboard />
-          <Toaster />
-        </WalletProvider>
-      </ReactQueryClientProvider>
-    </AutoConnectProvider>
+    <ThemeProvider>
+      <AutoConnectProvider>
+        <ReactQueryClientProvider>
+          <WalletProvider>
+            <ErrorBoundary>
+              <RouterProvider router={router} />
+            </ErrorBoundary>
+            <Toaster />
+          </WalletProvider>
+        </ReactQueryClientProvider>
+      </AutoConnectProvider>
+    </ThemeProvider>
   )
 }
 
