@@ -1,10 +1,9 @@
-import { Menu, Settings, ChevronDown } from 'lucide-react'
+import { Settings, ChevronDown } from 'lucide-react'
 import {
   Wallet,
   Coins,
   BookOpen,
   BarChart2,
-  Vote,
   Globe,
   Network
 } from 'lucide-react'

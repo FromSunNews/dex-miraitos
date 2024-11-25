@@ -12,18 +12,18 @@ import { router } from '@/routes';
 
 function App() {
   return (
-    <ThemeProvider>
-      <AutoConnectProvider>
-        <ReactQueryClientProvider>
-          <WalletProvider>
-            <ErrorBoundary>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <AutoConnectProvider>
+          <ReactQueryClientProvider>
+            <WalletProvider>
               <RouterProvider router={router} />
-            </ErrorBoundary>
-            <Toaster />
-          </WalletProvider>
-        </ReactQueryClientProvider>
-      </AutoConnectProvider>
-    </ThemeProvider>
+              <Toaster />
+            </WalletProvider>
+          </ReactQueryClientProvider>
+        </AutoConnectProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
   )
 }
 
