@@ -1,10 +1,8 @@
 import { lazy } from 'react'
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 import { RootLayout } from '@/layouts/root-layout'
 
-// Lazy load các pages
-// const pages = ['farm', 'lend', 'stake', 'bridge', 'docs', 'analytics', 'not-found']
-// const [FarmPage, LendPage, StakePage, BridgePage, DocsPage, AnalyticsPage, NotFoundPage] = pages.map(page => lazy(() => import(`@/pages/${page}`)))
+// Lazy load with pages
 const FarmPage = lazy(() => import('@/pages/farm'))
 const LendPage = lazy(() => import('@/pages/lend'))
 const StakePage = lazy(() => import('@/pages/stake'))
@@ -18,6 +16,10 @@ export const router = createBrowserRouter([
     path: '/',
     element: <RootLayout />,
     children: [
+      {
+        index: true,
+        element: <Navigate to="/farm" replace />
+      },
       {
         path: 'farm',
         element: <FarmPage />,
